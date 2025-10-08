@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Simple Task Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">
+                <span class="logo-icon">✓</span>
+                TaskFlow
+            </h1>
+        </header>
+
+        <main class="main">
+            <section class="task-input-section">
+                <div class="input-container">
+                    <label for="taskInput" class="sr-only">Add new task</label>
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="What needs to be done?"
+                        maxlength="200"
+                    >
+                    <button type="button" class="add-btn" id="addBtn" aria-label="Add task">
+                        <span class="add-icon">+</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="task-list-section">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+
+                <div class="task-stats">
+                    <span id="activeCount">0</span> active, 
+                    <span id="completedCount">0</span> completed
+                </div>
+
+                <ul class="task-list" id="taskList" role="list">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+
+                <div class="empty-state" id="emptyState">
+                    <p>No tasks yet. Add one above to get started!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 TaskFlow. Built with ❤️ for productivity.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
