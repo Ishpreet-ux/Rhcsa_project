@@ -1,64 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskFlow - Simple Task Management</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="logo">
-                <span class="logo-icon">✓</span>
-                TaskFlow
-            </h1>
-        </header>
+  <header>
+    <h1> TaskFlow</h1>
+  </header>
 
-        <main class="main">
-            <section class="task-input-section">
-                <div class="input-container">
-                    <label for="taskInput" class="sr-only">Add new task</label>
-                    <input 
-                        type="text" 
-                        id="taskInput" 
-                        class="task-input" 
-                        placeholder="What needs to be done?"
-                        maxlength="200"
-                    >
-                    <button type="button" class="add-btn" id="addBtn" aria-label="Add task">
-                        <span class="add-icon">+</span>
-                    </button>
-                </div>
-            </section>
+  <main>
+    <!-- Sidebar for Projects -->
+    <aside class="project-sidebar">
+      <h2>Projects</h2>
+      <ul id="project-list"></ul>
+      <input type="text" id="project-name" placeholder="New Project Name" />
+      <button id="add-project">Add Project</button>
+    </aside>
 
-            <section class="task-list-section">
-                <div class="filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="active">Active</button>
-                    <button class="filter-btn" data-filter="completed">Completed</button>
-                </div>
+    <!-- Main Content -->
+    <section class="project-main">
+      <!-- Progress -->
+      <div class="progress-section">
+        <h2>Progress</h2>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+        <span class="progress-text">0% Completed</span>
+      </div>
 
-                <div class="task-stats">
-                    <span id="activeCount">0</span> active, 
-                    <span id="completedCount">0</span> completed
-                </div>
+      <!-- Task Board -->
+      <section class="task-board">
+        <div class="column" id="pending">
+          <h2>Pending</h2>
+          <div class="task-list"></div>
+        </div>
+        <div class="column" id="in-progress">
+          <h2>In Progress</h2>
+          <div class="task-list"></div>
+        </div>
+        <div class="column" id="completed">
+          <h2>Completed</h2>
+          <div class="task-list"></div>
+        </div>
+      </section>
 
-                <ul class="task-list" id="taskList" role="list">
-                    <!-- Tasks will be dynamically added here -->
-                </ul>
+      <!-- Task Form -->
+      <section class="task-form">
+        <h2>Add / Edit Task</h2>
+        <input type="text" id="task-title" placeholder="Task title" />
+        <textarea id="task-desc" placeholder="Short description"></textarea>
+        <select id="task-status">
+          <option value="pending">Pending</option>
+          <option value="in-progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+        <button id="add-task">Add Task</button>
+        <button id="update-task" style="display:none;">Update Task</button>
+        <button id="cancel-edit" style="display:none;">Cancel</button>
+      </section>
+    </section>
 
-                <div class="empty-state" id="emptyState">
-                    <p>No tasks yet. Add one above to get started!</p>
-                </div>
-            </section>
-        </main>
+    <!-- Notes Modal -->
+    <div id="notes-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Notes</h2>
+        <ul id="notes-list"></ul>
+        <textarea id="note-text" placeholder="New note"></textarea>
+        <button id="add-note">Add Note</button>
 
-        <footer class="footer">
-            <p>&copy; 2024 TaskFlow. Built with ❤️ for productivity.</p>
-        </footer>
+      </div>
     </div>
+  </main>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
